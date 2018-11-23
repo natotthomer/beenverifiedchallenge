@@ -6,6 +6,7 @@ class Link < ActiveRecord::Base
 
   def self.get_or_create_from_long_url(long_url)
     link = self.find_by(long_url)
+
     
     if !link
       link = Link.create(long_url)
