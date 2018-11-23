@@ -1,4 +1,5 @@
 require 'base62-rb'
+require_relative '../workers/link_title_worker'
 
 class LinksController < ApplicationController
 
@@ -9,6 +10,8 @@ class LinksController < ApplicationController
 
   def create
     link = Link.get_or_create_from_long_url(create_params)
+
+    LinkTitleWorker.perform_async(link.id)
     
     render json: link
   end
