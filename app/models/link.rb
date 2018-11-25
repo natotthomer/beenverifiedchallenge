@@ -2,8 +2,6 @@ require 'base62-rb'
 
 class Link < ActiveRecord::Base
 
-  # validates :short_url, uniqueness: true
-
   def self.get_or_create_from_long_url(long_url)
     link = self.find_by(long_url)
 
@@ -12,9 +10,11 @@ class Link < ActiveRecord::Base
       short_url = Base62.encode(link.id)
       link.short_url = short_url
       LinkTitleWorker.perform_async(link.id)
-      link.save!
+      
+      if !link.save
+        link = false
+      end
     end
-
     
     link
   end
