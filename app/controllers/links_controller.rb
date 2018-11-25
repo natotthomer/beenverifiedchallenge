@@ -10,11 +10,7 @@ class LinksController < ApplicationController
   def create
     link = Link.get_or_create_from_long_url(create_params)
     
-    if link
-      render json: link
-    end
-
-    render json: `We're sorry, we had a problem processing your request, please try again`
+    render json: link
   end
 
   def re_direct
