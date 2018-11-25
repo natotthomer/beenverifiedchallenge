@@ -17,6 +17,9 @@ class LinksController < ApplicationController
     link = Link.get_from_route_params(route_params)
 
     if link
+      link.counter += 1
+      link.save
+
       redirect_to link.long_url
     else
       render json: "No link, sorry"
