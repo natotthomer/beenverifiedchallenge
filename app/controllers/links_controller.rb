@@ -3,7 +3,7 @@ require 'base62-rb'
 class LinksController < ApplicationController
 
   def index
-    links = Link.all
+    links = Link.all.order(:id)
     render json: links
   end
 
@@ -24,6 +24,10 @@ class LinksController < ApplicationController
     else
       render json: "No link, sorry"
     end
+  end
+
+  def top
+    render json: Link.order(counter: :desc).limit(100)
   end
 
   private
