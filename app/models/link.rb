@@ -11,8 +11,10 @@ class Link < ActiveRecord::Base
       link = Link.create(long_url)
       short_url = Base62.encode(link.id)
       link.short_url = short_url
+      LinkTitleWorker.perform_async(link.id)
       link.save!
     end
+
     
     link
   end
