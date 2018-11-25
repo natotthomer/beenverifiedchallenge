@@ -1,5 +1,4 @@
 require 'base62-rb'
-require_relative '../workers/link_title_worker'
 
 class LinksController < ApplicationController
 
