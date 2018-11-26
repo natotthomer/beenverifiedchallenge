@@ -8,17 +8,20 @@ class Api::LinksController < ApplicationController
   end
 
   def create
-    link = Link.get_or_create_from_long_url(create_params)
+    link = Link.get_or_create_from_params(create_params)
     
     render json: link
   end
 
   def re_direct
-    link = Link.get_from_route_params(route_params)
+    link = Link.get_from_short_url(short_url)
 
     if link
       link.counter += 1
       link.save
+
+      puts 'LONG URL'
+      puts link.long_url
 
       redirect_to link.long_url
     else
@@ -36,7 +39,7 @@ class Api::LinksController < ApplicationController
     params.require('link').permit('long_url')
   end
 
-  def route_params
+  def short_url
     params.permit('short_url')
   end
 
