@@ -1,6 +1,6 @@
 require 'base62-rb'
 
-class LinksController < ApplicationController
+class Api::LinksController < ApplicationController
 
   def index
     links = Link.all.order(:id)

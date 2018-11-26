@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :links
+  namespace :api do
+    resources :links
 
-  get '/api/top', to: 'links#top', as: 'top'
+    get '/top', to: 'links#top', as: 'top'
+  end
+
   
   get '/:short_url', to: 'links#re_direct', as: 're_direct'
 end
