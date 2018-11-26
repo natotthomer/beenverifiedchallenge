@@ -31,3 +31,7 @@ If all goes well, you should be able to cURL or use Postman to make requests to 
 - to use short URL `curl -L localhost:3000/ENTERSHORTURLHERE`
 - for list of top URLs `curl localhost:3000/api/top`
 - for full list of URLs, `curl localhost:3000/api/links`
+
+## Live site
+
+You can find the live version of the app (the headless version of the app, that is), at `shorturl-bv.herokuapp.com`. Like with the local version, you can access the API via `shorturl-bv.herokuapp.com/api/` and then with the appropriate url (`/links`, `/top`, etc.)
