@@ -20,9 +20,6 @@ class Api::LinksController < ApplicationController
       link.counter += 1
       link.save
 
-      puts 'LONG URL'
-      puts link.long_url
-
       redirect_to link.long_url
     else
       render json: "No link, sorry", status: :unprocessable_entity
