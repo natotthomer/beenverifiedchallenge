@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'base62-rb'
 gem 'sidekiq'
 gem 'foreman'
+gem 'webpacker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
