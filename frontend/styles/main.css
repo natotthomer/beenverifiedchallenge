@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.main {
+  /* padding-top: 30px; */
+}
+
+.header {
+  padding: 5px;
+  /* position: fixed; */
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  text-align: center;
+  box-shadow: 0 2px 40px lightgrey;
+}
+
+.content-container {
+  margin: 10px;
+}
+
+.content {
+
+}
+
+.content-title {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+}

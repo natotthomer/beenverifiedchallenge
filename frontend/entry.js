@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import App from './scripts/App'
+
+import './styles/main.css'
 
 document.addEventListener('DOMContentLoaded', handleBuild)
 
