@@ -60,3 +60,9 @@ body {
   color: red;
   background: lightgrey;
 }
+
+.hidden-input {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+}
