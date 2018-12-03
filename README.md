@@ -35,3 +35,11 @@ If all goes well, you should be able to cURL or use Postman to make requests to 
 ## Live site
 
 You can find the live version of the app (the headless version of the app, that is), at `shorturl-bv.herokuapp.com`. Like with the local version, you can access the API via `shorturl-bv.herokuapp.com/api/` and then with the appropriate url (`/links`, `/top`, etc.)
+
+## Part 2 updates:
+
+If the installation for the backend went well, to install the frontend locally:
+- in a fourth terminal window (in the same directory): `npm install`
+- `webpack`
+
+If you navigate to `localhost:3000`, you'll find a simple form to add new URLs to. At `localhost:3000/pages/top`, you'll find a list of the top 100 most popular shortURLs. All URLs are accepted, regardless of whether they are valid. I couldn't figure out a system that I liked for checking whether or not a URL is valid (regex validations are pretty brittle and I was running into CORS issues and I wanted to get this in ASAP). The very first thing I'd do is add some sort of frontend validation that the URL worked so that the user would know immediately (rather than have that work happen in the Sidekiq worker or the backend altogether). Then I'd clean up the styles and design, adding a custom flash message telling the user whether the URL is valid or not. 
