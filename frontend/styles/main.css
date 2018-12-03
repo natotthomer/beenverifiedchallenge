@@ -28,4 +28,35 @@ body {
   display: block;
   text-align: center;
   font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.url-form-container {
+  width: 400px;
+  margin: auto;
+}
+
+.url-form {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.short-link {
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+    flex-direction: column;
+}
+
+.click-to-copy {
+  cursor: pointer;
+  margin: auto;
+}
+
+.click-to-copy:hover {
+  color: red;
+  background: lightgrey;
 }

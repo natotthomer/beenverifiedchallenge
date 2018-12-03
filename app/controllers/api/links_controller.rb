@@ -25,7 +25,7 @@ class Api::LinksController < ApplicationController
 
       redirect_to link.long_url
     else
-      render json: "No link, sorry"
+      render json: "No link, sorry", status: :unprocessable_entity
     end
   end
 

@@ -1,13 +1,9 @@
-// const Cookies = require('js-cookie')
-
 const fetcher = options => new Promise((resolve, reject) => {
-    // const csrftoken = Cookies.get('csrftoken')
     const defaults = {
         credentials: 'include',
-          headers: new Headers({
-            // 'X-CSRFToken': csrftoken,
+        headers: new Headers({
             'X-Requested-With': 'XMLHttpRequest'
-          })
+        })
       }
 
     if (options.method === 'POST') {
@@ -29,12 +25,15 @@ const fetcher = options => new Promise((resolve, reject) => {
         Object.assign(defaults, { body, method: 'POST' })
     }
 
+
     return fetch(options.url, defaults).then(response => {
         if (response.status >= 400) {
             response.json().then(response => reject(response))
         } else {
             resolve(response.json())
         }
+    }).catch(error => {
+        console.log(error)
     })
 })
 
