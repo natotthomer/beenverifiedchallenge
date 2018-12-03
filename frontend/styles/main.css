@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+.main {
+  /* padding-top: 30px; */
+}
+
+.header {
+  padding: 5px;
+  /* position: fixed; */
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  text-align: center;
+  box-shadow: 0 2px 40px lightgrey;
+}
+
+.content-container {
+  margin: 10px;
+}
+
+.content-title {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.url-form-container {
+  width: 400px;
+  margin: auto;
+}
+
+.url-form {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.short-link {
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.click-to-copy {
+  cursor: pointer;
+  margin: auto;
+}
+
+.click-to-copy:hover {
+  color: red;
+  background: lightgrey;
+}
+
+.hidden-input {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+}
+
+.link-to-top {
+  margin-top: 30px;
+  text-align: center;
+}
