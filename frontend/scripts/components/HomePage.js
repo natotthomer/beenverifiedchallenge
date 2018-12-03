@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import fetcher from '../fetcher'
 import { getLocation } from '../utils'
@@ -58,14 +59,11 @@ export default class HomePage extends React.Component {
             className="hidden-input" />
         </div>
       )
-      
     }
     return null
   }
   
   render () {
-
-    
     return (
       <div className="content-container">
         <span className="content-title">Generate shortURLs!</span>
@@ -80,7 +78,10 @@ export default class HomePage extends React.Component {
               <button type="submit">Submit</button>
             </form>
           </div>
-        {this.renderShortLink()}
+          {this.renderShortLink()}
+          <div className="link-to-top">
+            <Link to='/pages/top'>Check out the most popular shortURLs</Link>
+          </div>
         </div>
       </div>
     )

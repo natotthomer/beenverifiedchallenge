@@ -20,7 +20,7 @@ export default class TopPage extends React.Component {
   render () {
     const urls = this.state.urls.map((url, idx) => {
       const full_url = getLocation() + url.short_url
-      return <div key={idx}>{idx} - {url.title} - <a target="_blank" href={full_url}>{full_url}</a></div>
+      return <div key={idx}>{idx + 1} - {url.title} - <a target="_blank" href={full_url}>{full_url}</a></div>
     })
     
     return (
