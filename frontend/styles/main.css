@@ -49,7 +49,7 @@ a:hover {
 }
 
 .short-link {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -57,8 +57,10 @@ a:hover {
 }
 
 .click-to-copy {
+  margin-top: 2px;
   cursor: pointer;
   margin: auto;
+  font-size: 12px;
 }
 
 .click-to-copy:hover {
