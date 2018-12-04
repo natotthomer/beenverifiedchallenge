@@ -12,7 +12,7 @@ class Link < ActiveRecord::Base
       long_url = Link.append_http(params)
       
       begin
-        link = Link.create({long_url: params[:long_url]})
+        link = Link.create({long_url: long_url})
         short_url = Base62.encode(link.id)
         link.short_url = short_url
         LinkTitleWorker.perform_async(link.id)
