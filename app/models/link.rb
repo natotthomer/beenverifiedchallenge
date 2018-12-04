@@ -3,20 +3,27 @@ require 'uri'
 
 class Link < ActiveRecord::Base
 
+  validates :long_url, http_url: true
+
   def self.get_or_create_from_params(params)
     link = self.find_by(params)
 
     if !link
       long_url = Link.append_http(params)
       
-      link = Link.create(long_url: long_url)
-      short_url = Base62.encode(link.id)
-      link.short_url = short_url
-      LinkTitleWorker.perform_async(link.id)
-      
-      if !link.save
-        link = false
-      end;
+      begin
+        link = Link.create({long_url: params[:long_url]})
+        short_url = Base62.encode(link.id)
+        link.short_url = short_url
+        LinkTitleWorker.perform_async(link.id)
+          
+        if !link.save
+          link = false
+        end;
+      rescue NoMethodError
+        raise
+        return link
+      end
     end
     
     link

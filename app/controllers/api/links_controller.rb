@@ -8,9 +8,13 @@ class Api::LinksController < ApplicationController
   end
 
   def create
-    link = Link.get_or_create_from_params(create_params)
+    begin
+      link = Link.get_or_create_from_params(create_params)
+      render json: link
+    rescue NoMethodError
+      render json: {error: "URL is invalid"}, status: :unprocessable_entity
+    end
     
-    render json: link
   end
 
   def re_direct

@@ -38,6 +38,8 @@ export default class HomePage extends React.Component {
       }).then(response => {
         const { short_url } = response
         this.setState({ long_url: '', short_url, urlError: false })
+      }).catch(error => {
+        this.setState({ urlError: true, short_url: '' })
       })
     } else {
       this.setState({ urlError: true, short_url: '' })
