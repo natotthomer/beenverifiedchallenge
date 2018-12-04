@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import fetcher from '../fetcher'
-import { getLocation } from '../utils'
+import { getLocation, validateURL } from '../utils'
 
 export default class HomePage extends React.Component {
   constructor (props) {
@@ -17,24 +17,31 @@ export default class HomePage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.renderShortLink = this.renderShortLink.bind(this)
     this.handleClickToCopy = this.handleClickToCopy.bind(this)
+    this.renderErrors = this.renderErrors.bind(this)
   }
 
   handleURLChange (e) {
     e.preventDefault()
-
+    
     this.setState({ long_url: e.target.value })
   }
 
   handleSubmit (e) {
     e.preventDefault()
 
-    fetcher({
-      url: `/api/links/?link[long_url]=${this.state.long_url}`, 
-      method: 'POST' 
-    }).then(response => {
-      const { short_url } = response
-      this.setState({ long_url: '', short_url })
-    })
+    const long_url = validateURL(this.state.long_url)
+
+    if (long_url) {
+      fetcher({
+        url: `/api/links/?link[long_url]=${this.state.long_url}`, 
+        method: 'POST' 
+      }).then(response => {
+        const { short_url } = response
+        this.setState({ long_url: '', short_url, urlError: false })
+      })
+    } else {
+      this.setState({ urlError: true, short_url: '' })
+    }
   }
 
   handleClickToCopy (e) {
@@ -62,6 +69,14 @@ export default class HomePage extends React.Component {
     }
     return null
   }
+
+  renderErrors () {
+    if (this.state.urlError) {
+      return (
+        <div className="url-error">It seems there's a problem with the URL you've provided; please correct any mistakes and try again.</div>
+      )
+    }
+  }
   
   render () {
     return (
@@ -79,6 +94,7 @@ export default class HomePage extends React.Component {
             </form>
           </div>
           {this.renderShortLink()}
+          {this.renderErrors()}
           <div className="link-to-top">
             <Link to='/pages/top'>Check out the most popular shortURLs</Link>
           </div>
